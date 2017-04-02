@@ -1,7 +1,17 @@
+import copy
+
 class State:
-    def __init__(self, num_of_players, board ):
+    
+    board = {}
+    def __init__(self, num_of_players, board, next_player):
         self.num_of_players = num_of_players
-        for i in board:
-             for key in i:
-                 self.board[key] = i[key]
-        
+        for key in board:
+            self.board[key] = board[key] #očakávaná je tuple, ktorá je immutable
+        self.next_player = next_player
+    def get_num_of_players(self):
+        return self.num_of_players
+    def get_next_player(self):
+        return self.next_player
+    def get_board(self):
+        return copy.copy(self.board) #stačí shallow copy (to je čo copy.copy(obj) robí)
+    
