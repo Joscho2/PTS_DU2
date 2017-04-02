@@ -17,7 +17,7 @@ def start():
     board = {}
     for i in range(0, num_of_players):
         board[i] = ("-1", "-1", "-1", "-1")
-    game_state = state.State(num_of_players,board,random.randint(0, num_of_players-1)))
+    game_state = state.State(num_of_players,board,random.randint(0, num_of_players-1))
     play()
 
 def get_command():    

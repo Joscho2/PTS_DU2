@@ -21,9 +21,11 @@ class History:
         for key in board:
             if(key == player): continue
             tpl = board[key]
-            for i in range(0, len(tpl):
+            for i in range(0, len(tpl)):
                 if(tpl[i] == position):
-                    board[key] = tuple(list(tpl)[i] = -1)
+                    temp_list = list(tpl)
+                    temp_list[i] = -1
+                    board[key] = tuple(temp_list)
                     break
         board[player]
         n_players = state.get_num_of_players()
