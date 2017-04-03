@@ -2,8 +2,7 @@ import state
 import sys
 import random
 import history
-
-BOARD_SIZE = 40 #Každých 10 políčok začína nový hráč (0, 10, 20, 30) 
+import constants as con
 
 game_state = None #mutovatelna premenna ukazujúca na aktuálny stav hry
 num_of_players = 0
@@ -13,14 +12,14 @@ def start():
     global game_state
     global num_of_players
     global game_history
-    while(num_of_players < 2 or num_of_players > 4):
-        print("Zadajte pocet hracov (min. 2, max 4):")
+    while(num_of_players < 2 or num_of_players > con.MAX_PLAYERS):
+        print("Zadajte pocet hracov (min. 2, max " + str(con.MAX_PLAYERS) + "):")
         num_of_players = int(input())
     board = {}
     for i in range(0, num_of_players):
         board[i] = (-1, -1, -1, -1)
     game_state = state.State(num_of_players,board,random.randint(0, num_of_players-1))
-    game_history = history.History(BOARD_SIZE)
+    game_history = history.History()
     play()
 
 def get_command():    
