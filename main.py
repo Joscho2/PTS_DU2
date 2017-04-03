@@ -43,6 +43,12 @@ def play():
         print_state()
         com = get_command()
         if(com == 'quit'):
+            print("Výsledné skóre:")
+            res = []
+            for i in range(0, len(game_state.get_score())):
+                res.append((game_state.get_score()[i], i))
+            for i in sorted(res, key = lambda x: x[0], reverse = True):
+                print('Hráč ' + str(i[1]) + ' získal ' + str(i[0]) + ' bodov.')
             exit()
         elif(com == 'undo'):
             game_state = game_history.undo(game_state)
