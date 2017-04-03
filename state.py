@@ -13,5 +13,4 @@ class State:
     def get_next_player(self):
         return self.next_player
     def get_board(self):
-        return copy.copy(self.board) #stačí shallow copy (to je čo copy.copy(obj) robí)
-    
+        return copy.copy(self.board)
