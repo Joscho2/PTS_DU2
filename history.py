@@ -1,6 +1,6 @@
 import state
 import copy
-import constants
+import constants as con
 
 class History:
     
@@ -23,14 +23,23 @@ class History:
         next_player = player if move == 6 else (player + 1) % n_players               
         new_state.next_player = next_player
         board = new_state.get_board()
+        
         position = board[player][piece]
         if(position == -1):
             #ak hodí 1 začína na svojom "štarte", od toho čo padlo na kocke odčítame -1
-            position += player*constants.OFFSET + move
+            position += player*con.OFFSET + move
         else:
+            if ((position < player*con.OFFSET and position + move >= player*con.OFFSET)
+            or (position + move >= con.BOARD_SIZE
+            and (position + move) % con.BOARD_SIZE >= player*con.OFFSET)):
+                print("Hráč " + str(player) + " získava 1 bod!")
+                temp = list(new_state.get_score())
+                temp[player] += 1
+                new_state.score = tuple(temp) 
             position += move
-            position %= constants.BOARD_SIZE
+            position %= con.BOARD_SIZE
         position = int(position)
+
         for key in board:
             #je možné mať viac vlastných figúrok na rovnakej pozicií
             if(key == player): continue            

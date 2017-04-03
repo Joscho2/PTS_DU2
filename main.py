@@ -5,13 +5,13 @@ import history
 import constants as con
 
 game_state = None #mutovatelna premenna ukazujúca na aktuálny stav hry
-num_of_players = 0
 game_history = None
 
 def start():
     global game_state
-    global num_of_players
     global game_history
+
+    num_of_players = 0
     while(num_of_players < 2 or num_of_players > con.MAX_PLAYERS):
         print("Zadajte pocet hracov (min. 2, max " + str(con.MAX_PLAYERS) + "):")
         num_of_players = int(input())
@@ -33,7 +33,7 @@ def print_state():
         sys.stdout.write('Hráč ' + str(key) + ' s figúrkami na pozíciach: ')
         for i in range(0, len(board[key])):
             sys.stdout.write(str(i) + ':' + str(board[key][i]) + ' ')
-        sys.stdout.write('\n')
+        sys.stdout.write(' Bodov: ' + str(game_state.get_score()[key]) + '\n')
     sys.stdout.write('Na rade je hráč s číslom '+str(game_state.get_next_player())+'\n')
     sys.stdout.flush()
 
