@@ -2,6 +2,16 @@ import copy
 
 class State:
     
+    """
+    Trieda predstavujúca stav hry.
+    board, herná plocha, je slovník tuplí, pre každého hráča jedna tupla
+    v ktorej sa nachádzajú 4 prvky - pozície hráčových figúrok.
+    num_of_players, počet hráčov v aktuálnej hre.
+    next_player, hráč ktorý je aktuálne na ťahu, resp. ide hádzať kockou.
+    score, tupla, ukladajúca si skóre jedntolivých hráčov (indexy sú čísla hráčov)
+    vytvorí sa pri inicializácií objektu obsahujúca len nuly.
+    """
+
     board = {}
     def __init__(self, num_of_players, board, next_player):
         self.num_of_players = num_of_players

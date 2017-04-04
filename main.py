@@ -5,9 +5,14 @@ import history
 import constants as con
 
 game_state = None #mutovatelna premenna ukazujúca na aktuálny stav hry
-game_history = None
+game_history = None #bude sa odkazovať na inštanciu triedy History
 
 def start():
+    """
+    Funkcia pripravujúca hru.
+    Tu sa zisťuje počet hráčov a pripravuje sa prvý stav hry, kedy
+    majú všetci hráči svoje figúrky v domčeku (sú na pozícií -1).
+    """
     global game_state
     global game_history
 
@@ -23,11 +28,18 @@ def start():
     play()
 
 def get_command():    
+    """
+    Jednoduchá deokária terminálu pridávajúca '$' pred užívateľov vstup.
+    :returns: užívateľov vstup
+    """
     sys.stdout.write('$ ')
     sys.stdout.flush()
     return input()
 
 def print_state():
+    """
+    Vypísanie aktuálneho stavu hry na štandardný vžstup.
+    """
     board = game_state.get_board()
     for key in board:
         sys.stdout.write('Hráč ' + str(key) + ' s figúrkami na pozíciach: ')
@@ -38,6 +50,11 @@ def print_state():
     sys.stdout.flush()
 
 def play():
+    """
+    Hranie hry. Funcia spracováva užívatelove príkazy
+    a vykonáva ich. Predpoklad pre spustenie funkcie play
+    je existencia stavu hry na ktorý ukazuje game_state.
+    """
     global game_state
     while(True):
         print_state()
