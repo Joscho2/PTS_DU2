@@ -65,7 +65,6 @@ class History:
             for i in range(0, len(tpl)):
                 if(tpl[i] == position):
                     self.edit_tuple(board, key, -1, i)
-                    break
         self.edit_tuple(board, player, position, piece)
         new_state.board = board
         return new_state
