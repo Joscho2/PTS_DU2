@@ -22,12 +22,15 @@ class State:
         for i in range(0, num_of_players):
             temp.append(0)
         self.score = tuple(temp)
-    # REVIEW: medzi definicie fcii v classe by sa hodila aspon 1 blank line
+
     def get_num_of_players(self):
         return self.num_of_players
+
     def get_next_player(self):
         return self.next_player
+
     def get_board(self):
         return copy.copy(self.board)
+
     def get_score(self):
         return self.score
