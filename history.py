@@ -20,6 +20,7 @@ class History:
         temp_list = list(board[key])
         temp_list[index] = new
         board[key] = tuple(temp_list)
+    # REVIEW: medzi definicie fcii v classe by sa hodila aspon 1 blank line
     def execute(self, g_state, move, piece):
         """
         Metóda vykonávajúca všetky zmeny v hre.
@@ -65,6 +66,7 @@ class History:
             for i in range(0, len(tpl)):
                 if(tpl[i] == position):
                     self.edit_tuple(board, key, -1, i)
+        # REVIEW: + blank line for better readability
         self.edit_tuple(board, player, position, piece)
         new_state.board = board
         return new_state
