@@ -39,6 +39,7 @@ def get_command():
     sys.stdout.flush()
     return input()
 
+
 def print_state():
     """
     Vypísanie aktuálneho stavu hry na štandardný vžstup.
@@ -52,6 +53,7 @@ def print_state():
         sys.stdout.write(' Bodov: ' + str(game_state.get_score()[key]) + '\n')
     sys.stdout.write('Na rade je hráč s číslom '+str(game_state.get_next_player())+'\n')
     sys.stdout.flush()
+
 
 def play():
     """
