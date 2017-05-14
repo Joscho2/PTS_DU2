@@ -1,7 +1,7 @@
 import copy
 
 class State:
-    
+
     """
     Trieda predstavujúca stav hry.
     board, herná plocha, je slovník tuplí, pre každého hráča jedna tupla

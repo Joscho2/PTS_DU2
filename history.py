@@ -9,9 +9,9 @@ class History:
     a o ukladanie si ešte nezmenených stavov v pamäti, vďaka čomu sa bude dať
     pohodlne vrátiť k akémukoľvek predchádzajúcemu hernému stavu.
     """
-    
+
     state_history = []
-        
+
     def edit_tuple(self, board, key, new, index):
         """
         Vytvorí novú tuplu s hodnotou new na pozícií index a položí na miesto starej
@@ -32,14 +32,14 @@ class History:
         """
         new_state = copy.copy(g_state)
         self.state_history.append(copy.copy(g_state))
-        
+
         #Výpočet nasledujúceho hráča, ak padla na kocke 6, hráč sa nemení
         n_players = g_state.get_num_of_players()
         player = g_state.get_next_player()
-        next_player = player if move == 6 else (player + 1) % n_players               
+        next_player = player if move == 6 else (player + 1) % n_players
         new_state.next_player = next_player
         board = new_state.get_board()
-        
+
         #Posun figúrky a pripočítavanie bodov. Ak hráč nejakou figúrkou
         #prejde cez svoje štartovacie políčko, získa 1 bod
         position = board[player][piece]
@@ -53,15 +53,15 @@ class History:
                 print("Hráč " + str(player) + " získava 1 bod!")
                 temp = list(new_state.get_score())
                 temp[player] += 1
-                new_state.score = tuple(temp) 
+                new_state.score = tuple(temp)
             position += move
             position %= con.BOARD_SIZE
         position = int(position)
-        
+
         #Vyhadzovanie súperových figúrok
         for key in board:
             #je možné mať viac vlastných figúrok na rovnakej pozicií
-            if(key == player): continue            
+            if(key == player): continue
             tpl = board[key]
             for i in range(0, len(tpl)):
                 if(tpl[i] == position):
